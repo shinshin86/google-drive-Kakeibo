@@ -64,7 +64,8 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 2.次に送信フォームを準備します。
 
 下記の画像を参考に、同様の送信フォームを作成してください。
-（サンプル画像をはりつける - TODO）
+
+![送信フォーム - 画像](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/Kakeibo_form_sample.png)
 
 
 	フォームの作成手順は下記の通り:
@@ -80,7 +81,8 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 次にスプレッドシートの選択画面が出てくるので、"家計簿スプレッドシート"を選択。
 
 すると、"家計簿スプレッドシート"に新たなシートが追加されているので、そちらのシートに下記の画像と同様の項目を追加してください。
-（サンプル画像をはりつける - TODO）
+
+![Form送信結果_スプレッドシート](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/Kakeibo_Spreedsheet_sample.png)
 
 
 これで送信フォームの準備は以上です。
@@ -90,6 +92,8 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 	例：2015/02
 	
 5.下記の画像を参考にして、変更したスプレッドシートファイルに表を作成します。 
+
+![スプレッドシート](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/Spreedsheet_01_sample.png)
 
 ※なお、ひと月の集計ごとに一枚のシートを使用していくので、利用する月数分のシートは今のうちから作成しておいたほうが便利かもしれません。上で作成したスプレッドシートをいくつもコピーし、シート名を変更しておいてください。
 
