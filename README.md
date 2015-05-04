@@ -1,11 +1,8 @@
 # google-drive-Kakeibo
-"google-drive-Kakeibo" for household accounts on Google Drive. it is a simple app
-
-(Japanese only so far).
-
-
----
+#####"google-drive-Kakeibo" for household accounts on Google Drive. it is a simple app.
 * Version 0.9(beta)
+* Japanese only so far
+
 
 #概要  
 ---
@@ -62,7 +59,7 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 
 2.次に送信フォームを準備します。
 
-下記の画像を参考に、同様の送信フォームを作成してください。
+下記の画像と送信フォーム作成手順を参考に、同様の送信フォームを作成してください。
 
 ![送信フォーム - 画像](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/Kakeibo_form_sample.png)
 
@@ -77,9 +74,14 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 
 3.フォームを作成した終えたら、フォーム画面上部に付いている「回答」ボタンを押下し、表示されたメニューから「回答先を変更…」を押下し、既存のスプレッドシートの新しいシート...の項目にチェックを付け、「選択」ボタンを押下します。
 
-次にスプレッドシートの選択画面が出てくるので、"家計簿スプレッドシート"を選択。
+次にスプレッドシートの選択画面が出てくるので、先ほど作成した"家計簿スプレッドシート"を選択。
 
 すると、"家計簿スプレッドシート"に新たなシートが追加されているので、そちらのシートに下記の画像と同様の項目を追加してください。
+
+
+※実装上の都合により、セルのF3〜G4にかけてある対象月・対象シートの欄は必ず適切な値を入力してください。間違えた値を入力した場合、スクリプトエラーが発生します。この部分については、後に改修する予定です。
+
+	例：2015年5月の場合、対象月⇒2015/05/01,対象シート⇒201505
 
 ![Form送信結果_スプレッドシート](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/Kakeibo_Spreedsheet_sample.png)
 

@@ -159,8 +159,8 @@ function countScript(){
     // Payment
     kSpreadsheet_copyTo.getRange("B7").setValue(Payment);
     
-    // Payment_02
-    kSpreadsheet_copyTo.getRange("B8").setValue(Payment_02);
+    // Payment_02（支払者を２人にする場合は、下記の行のコメントを外すこと。また、それ以上の人数の支払者を設定する場合は、下記の行を増やしてコードを変更すること）
+    // kSpreadsheet_copyTo.getRange("B8").setValue(Payment_02);
     
     
     // メール内容
