@@ -11,7 +11,8 @@ function countScript(){
     
     // data
     var kDate;
-    var kMonth;//対象月とマッチさせるため
+    var kYear; // 対象年とマッチさせるため
+    var kMonth;// 対象月とマッチさせるため
     var kItem;
     var kPay = 0;
     var kPayer;
@@ -38,16 +39,13 @@ function countScript(){
     
     // コピー元のセル
     var kSpreadsheet = SpreadsheetApp.openById(KSS_ID);
-    // Logger.log("ID : " + kSpreadsheet.getName());
     var kSheet = kSpreadsheet.getSheets()[0];
-    // Logger.log("ID : " + kSheet.getName());
     var kData = kSheet.getDataRange().getValues();
     
     // 対象月を取得
     var targetDate = new Date(kSheet.getRange("F3").getValues());
-    // Logger.log(targetDate)
-    var targetMonth = targetDate.getMonth() + 1;// Only Month
-    // Logger.log(targetMonth);
+    var targetYear = targetDate.getFullYear();
+    var targetMonth = targetDate.getMonth() + 1; // 対象月は"1"を足している(1月分低い数値が取れるため)
     
     
     // コピー先のセルを取得
@@ -57,73 +55,75 @@ function countScript(){
     
     // 集計ループ
     for(var i = 1; i < kData.length; i++){
-        
+
+        // 集計データから日付のみを取得、年と月に振り分ける
         kDate = kData[i][0];
+        kYear = kDate.getFullYear();
         kMonth = kDate.getMonth() + 1;
         
-        if(targetMonth == kMonth){
-            
-            kItem = kData[i][1];
-            
-            switch(kItem){
-                case "食料品":
-                    foodCharges += parseInt(kData[i][2]);
-                    break;
-                    
-                case "日用品":
-                    groceriesCharges += parseInt(kData[i][2]);
-                    break;
-                    
-                case "家財道具":
-                    householdCharges += parseInt(kData[i][2]);
-                    break;
-                    
-                case "水道代":
-                    waterCharges += parseInt(kData[i][2]);
-                    break;
-                    
-                case "ガス代":
-                    gasCharges += parseInt(kData[i][2]);
-                    break;
-                    
-                case "電気代":
-                    electricityCharges += parseInt(kData[i][2]);
-                    break;
-                    
-                case "家賃":
-                    houseRent += parseInt(kData[i][2]);
-                    break;
-                    
-                case "ガソリン代":
-                    gasolineCharges += parseInt(kData[i][2]);
-                    break;
-                    
-                default:
-                    otherCharges += parseInt(kData[i][2]);
-                    break;
-                    
+        // 対象の年月とマッチしている項目のみを集計する
+        if(targetYear == kYear){
+            if(targetMonth == kMonth){
+                
+                kItem = kData[i][1];
+                
+                switch(kItem){
+                    case "食料品":
+                        foodCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                    case "日用品":
+                        groceriesCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                    case "家財道具":
+                        householdCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                    case "水道代":
+                        waterCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                    case "ガス代":
+                        gasCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                    case "電気代":
+                        electricityCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                    case "家賃":
+                        houseRent += parseInt(kData[i][2]);
+                        break;
+                        
+                    case "ガソリン代":
+                        gasolineCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                    default:
+                        otherCharges += parseInt(kData[i][2]);
+                        break;
+                        
+                }
+                
+                kPayer = kData[i][3];
+                
+                // Googleフォーム上での指定した支払者の名前
+                switch(kPayer){
+                    case "[INSERT YOUR NAME(Synchronize name with Google form name)]":
+                        Payment += parseInt(kData[i][2]);
+                        break;
+                        
+                        // 支払者を２人にする場合は、このコメントを外し、使用すること。また、それ以上の人数の支払者を設定する場合は、case文を拡張していくこと
+                        // case "[INSERT YOUR NAME_02(Synchronize name with Google form name)]":
+                        //    Payment_02 += parseInt(kData[i][2]);
+                        //    break;
+                }
+                
+                kPay += parseInt(kData[i][2]);
+                
             }
-            
-            kPayer = kData[i][3];
-            
-            // Googleフォーム上での指定した支払者の名前
-            
-            
-            switch(kPayer){
-                case "[INSERT YOUR NAME(Synchronize name with Google form name)]":
-                    Payment += parseInt(kData[i][2]);
-                    break;
-                    
-                    // 支払者を２人にする場合は、このコメントを外し、使用すること。また、それ以上の人数の支払者を設定する場合は、case文を拡張していくこと
-                    // case "[INSERT YOUR NAME_02(Synchronize name with Google form name)]":
-                    //    Payment_02 += parseInt(kData[i][2]);
-                    //    break;
-            }
-            
-            kPay += parseInt(kData[i][2]);
-            
         }
-        
     }
     
     // 合計額を対象シートに代入
