@@ -101,7 +101,7 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 
 6.続いて、新規作成したフォルダ内で、画面上から「新規」ボタン押下→「その他」→「Google Apps スクリプト」を選択し、"CountScript"というスクリプトファイルを作成します。
 
-7."CountScript"ファイルを開き、[ここからgoogle-drive-Kakeiboのスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/count_script.js)をコピー&ペーストしてください。 
+7."CountScript"ファイルを開き、[ここからgoogle-drive-Kakeiboのスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/count_script.js)をコピー&ペーストしてください。 
 	
 	あなたの使用する環境に合わせて、いくつかソースを書き換える必要があります。
 		
