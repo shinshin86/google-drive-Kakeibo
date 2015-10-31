@@ -1,7 +1,11 @@
 # google-drive-Kakeibo
 #####"google-drive-Kakeibo" for household accounts on Google Drive. it is a simple app.
-* Version 0.9(beta)
+* Version 1.1
 * Japanese only so far
+
+# Change Log
+---
+Export機能を追加(現在CSVのみ対応)
 
 
 #概要  
