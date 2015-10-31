@@ -145,3 +145,12 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 今までの集計の全内容を参照することが出来ます。
 
 
+
+# Export機能
+---
+今までの支払い記録(PaymentList_form)をJSON、またはCSV形式でエクスポートできます。
+
+導入手順については、
+
+[ここからgoogle-drive-KakeiboのExport用のスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/count_script.js)
+
