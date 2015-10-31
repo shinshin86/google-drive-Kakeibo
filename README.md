@@ -5,7 +5,7 @@
 
 # Change Log
 ---
-Export機能を追加(現在CSVのみ対応)
+Export機能を追加(JSON,CSV対応)
 
 
 #概要  
