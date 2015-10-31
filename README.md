@@ -159,7 +159,7 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 2.スクリプトエディタ内にて、[ここからgoogle-drive-KakeiboのExport用のスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/export_script.js)をコピー＆ペーストして保存します。
 
 3."PaymentList_form"シート上を一度閉じてから再度開きます。すると、メニューバーに"Export Menu"が追加されているので、あとはそこから各Export機能を実行できます。
-(下の図を参照)<br>
+<br>(下の図を参照)
 
 ![スクリプトエディタを起動する](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/introduction_of_export_function_02.png)
 
