@@ -150,7 +150,11 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 ---
 今までの支払い記録(PaymentList_form)をJSON、またはCSV形式でエクスポートできます。
 
-導入手順については、
+1.導入手順については、"PaymentList_form"シートを開き、「ツール」⇒「スクリプトエディタ」を選択します<br>
+(下の図を参照)
+![Form送信結果_スプレッドシート](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/Kakeibo_Spreedsheet_sample.png)
 
-[ここからgoogle-drive-KakeiboのExport用のスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/count_script.js)
+
+
+[ここからgoogle-drive-KakeiboのExport用のスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/export_script.js)をコピー＆ペースとして
 
