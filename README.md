@@ -152,9 +152,21 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 
 1.導入手順については、"PaymentList_form"シートを開き、「ツール」⇒「スクリプトエディタ」を選択します<br>
 (下の図を参照)
-![Form送信結果_スプレッドシート](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/Kakeibo_Spreedsheet_sample.png)
+
+![スクリプトエディタを起動する](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/introduction_of_export_function_01.png)
 
 
+2.スクリプトエディタ内にて、[ここからgoogle-drive-KakeiboのExport用のスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/export_script.js)をコピー＆ペーストして保存します。
 
-[ここからgoogle-drive-KakeiboのExport用のスクリプトソース](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/export_script.js)をコピー＆ペースとして
+3."PaymentList_form"シート上を一度閉じてから再度開きます。すると、メニューバーに"Export Menu"が追加されているので、あとはそこから各Export機能を実行できます。
+(下の図を参照)<br>
+
+![スクリプトエディタを起動する](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/introduction_of_export_function_02.png)
+
+4.Export機能を用いて実際にエクスポートした各ファイルは下記のとおりです。
+
+[JSON_Exportファイル](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/Sample_of_Export_File_JSON/PaymentList_JSON_20151031_223554.json)
+
+[CSV_Exportファイル](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/Sample_of_Export_File_CSV/PaymentList_CSV_20151031_041.csv)
+
 
