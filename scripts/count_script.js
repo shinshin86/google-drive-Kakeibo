@@ -170,7 +170,7 @@ function countScript(){
     
     // 家計簿Spreadsheet内の予算よりも使用額が多ければ、赤字と判定する。
     if(kSpreadsheet_copyTo.getRange("B4").getValues() < 0){
-        kakeiMsg = "今月は赤字です。";
+        kakeiMsg = "今月は赤字です。 ¥" + kSpreadsheet_copyTo.getRange("B4").getValues() + "の赤字が発生しています。";
 
         // 支払者を２人にする場合は、下記の行のコメントを外すこと。また、それ以上の人数で使用する場合は、コード末尾の方にある数字を人数分に変更すること
         // kakeiMsg = kakeiMsg + kSpreadsheet_copyTo.getRange("B6").setValue(Math.floor(kSpreadsheet_copyTo.getRange("B4").getValues() / 2));
