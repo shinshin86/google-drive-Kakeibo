@@ -1,5 +1,7 @@
 # google-drive-Kakeibo
+
 ##### "google-drive-Kakeibo" for household accounts on Google Drive. it is a simple app.
+
 * Version 1.1
 * Japanese only so far
 
@@ -56,7 +58,8 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 
 (セットアップ時間の目安は15分です。)
 
-##### ---導入手順---
+##### 導入手順
+
 0.あなたのGoogleドライブを開き、画面上から「新規」ボタン押下→「フォルダ」という順に操作を行い、"google-drive-kakeibo"という名前でフォルダを作成してください。
 
 1.新規作成したフォルダ内で、画面上から「新規」ボタン押下→「Google スプレッドシート」を選択し、"家計簿スプレッドシート"というスプレッドシートファイルを作成します。
