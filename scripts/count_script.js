@@ -129,7 +129,7 @@ function countScript(){
     // 合計額を対象シートに代入
     kSpreadsheet_copyTo.getRange("B3").setValue(kPay);
     
-    // 食料品・日用品
+    // 食料品
     kSpreadsheet_copyTo.getRange("E2").setValue(foodCharges);
     
     // 日用品
