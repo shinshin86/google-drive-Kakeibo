@@ -5,12 +5,12 @@
 * Version 1.1
 * Japanese only so far
 
-# Change Log
+## Change Log
 
-* Export機能を追加(JSON,CSV対応)
+[Change Log](CHANGELOG.md)に記載。
 
 
-# 概要  
+## 概要  
 
 ##### google-drive-KakeiboはGoogleドライブ上で家計簿をつける、シンプルなアプリです。  
 専用の送信フォームから支払った金額と項目を入力して"送信"ボタンを押せば、  
@@ -25,27 +25,27 @@ Googleドライブ上のスプレッドシートにそれらのリストが記�
 
 
 
-# 条件  
+## 条件  
 
 * Googleアカウントを持っていること
 
-# 動作環境  
+## 動作環境  
 
 * Googleドライブ上にて使用
 
-# 機能
+## 機能
 
 * 家計簿専用のWeb送信フォーム
 * 月末の自動集計機能
 * 集計データのメール通知
 
-# ダウンロード
+## ダウンロード
 
 * "google-dirve-Kakeibo"のソースはGitHub上からダウンロードできます。  
 [google-drive-Kakeibo(GitHub)](https://github.com/shinshin86/google-drive-Kakeibo)
 
 
-# 導入方法
+## 導入方法
 
 下記は"google-drive-Kakeibo"をセットアップ・スタートさせるための設定方法を記載したものです。  
 これらの手順を踏み、セットアップ・設定を完了させれば、後はバックグラウンドでスクリプトが自動的に処理を行います。
@@ -137,7 +137,7 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 
 
 
-# 使用方法
+## 使用方法
 
 送信フォームのURLをあなたのスマートフォンやPCのブラウザに登録しておき、  
 何かを支払った際に送信フォームにアクセスし、支払者と項目、それから金額を入力して"送信"ボタンを押下します。  
@@ -149,7 +149,7 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 
 
 
-# Export機能
+## Export機能
 
 今までの支払い記録(PaymentList_form)をJSON、またはCSV形式でエクスポートできます。
 
