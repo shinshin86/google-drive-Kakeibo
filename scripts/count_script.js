@@ -1,5 +1,7 @@
-function getCount(processType, tDate){
-    
+function getCount(processTypeId, tDate){
+    // 定数
+    FIRST_DAY = "01"; // 月初めの日付として使用
+
     // 使用するSpreadsheetのIDを入力
     var KSS_ID = "[INSERT YOUR SPREADSHEET ID]";
     
@@ -46,20 +48,30 @@ function getCount(processType, tDate){
     var targetDate,
         targetYear,
         targetMonth;
-    if(typeof processType === "undefined") {
+    if(typeof processTypeId === "undefined") {
         // 現在月の集計データ取得パターン
         targetDate  = new Date(kSheet.getRange("F3").getValues());
         targetYear  = targetDate.getFullYear();
         targetMonth = targetDate.getMonth() + 1; // 対象月は"1"を足している(1月分低い数値が取れるため)
-    } else if (processType == 1) {
+    } else if (processTypeId == 1) {
         // データ集計後に翌月の値に更新
         targetDate  = new Date(kSheet.getRange("F3").getValues());
         targetYear  = targetDate.getFullYear();
         targetMonth = targetDate.getMonth() + 1; // 対象月は"1"を足している(1月分低い数値が取れるため)
         
         //  翌月の値に更新
-        kSheet.getRange("F3").setValue(new Date({y: targetYear, m: targetMonth}));
-    } else if (processType == 2 &&
+        //  現在月が12月の場合は、来年の１月に設定する
+        if(targetMonth === 12) {
+            targetDate.setFullYear(targetDate.getFullYear() + 1);
+            targetDate.setMonth(0);
+        }
+        kSheet.getRange("F3").setValue(targetDate);
+        
+        // 項目【対象シート】も更新
+        kSheet.getRange("F3").setValue(targetDate.getFullYear() + "/" + ("00" + (targetDate.getMonth() + 2)).slice(-2) + "/" + FIRST_DAY);
+        // 文字列で挿入する場合は、月への変換処理で１低い値で計算されることを想定して、2を足す
+        kSheet.getRange("G3").setValue(targetDate.getFullYear() + ("00" + (targetDate.getMonth() + 2)).slice(-2));
+    } else if (processTypeId == 2 &&
                typeof tDate !== "undefined"){
         // 指定月のデータを取得
         targetDate = new Date(tDate);
@@ -67,18 +79,19 @@ function getCount(processType, tDate){
         targetMonth = targetDate.getMonth();
     } else {
         // エラーパターンのため、何もせずに終了
+        Logger.log("エラーが発生しました。処理を行わずに終了します");
         return;
     }
     
-    
     // コピー先のセルを取得
+    if(kSpreadsheet.getSheetByName(kSheet.getRange("G3").getValues()) === null) {
+        Logger.log("コピー先のセルが存在しません : " + kSheet.getRange("G3").getValues());
+        return;
+    }
     var kSpreadsheet_copyTo = kSpreadsheet.getSheetByName(kSheet.getRange("G3").getValues());
-    
-    
-    
+
     // 集計ループ
     for(var i = 1; i < kData.length; i++){
-
         // 集計データから日付のみを取得、年と月に振り分ける
         kDate = kData[i][0];
         kYear = kDate.getFullYear();
@@ -126,7 +139,6 @@ function getCount(processType, tDate){
                     default:
                         otherCharges += parseInt(kData[i][2]);
                         break;
-                        
                 }
                 
                 kPayer = kData[i][3];
@@ -144,7 +156,6 @@ function getCount(processType, tDate){
                 }
                 
                 kPay += parseInt(kData[i][2]);
-                
             }
         }
     }
@@ -185,7 +196,6 @@ function getCount(processType, tDate){
     // Payment_02（支払者を２人にする場合は、下記の行のコメントを外すこと。また、それ以上の人数の支払者を設定する場合は、下記の行を増やしてコードを変更すること）
     // kSpreadsheet_copyTo.getRange("B8").setValue(Payment_02);
     
-    
     // メール内容
     message = kSheet.getRange("G3").getValues() + " : 家計簿レポート";
     var subject = message;
@@ -200,8 +210,7 @@ function getCount(processType, tDate){
     }else{
         kakeiMsg = "今月は黒字です。";
     }
-    
-    
+
     message = "<h3>///////////" + kSheet.getRange("G3").getValues() + " : 支払レポート///////////</h3>";
     message = message + "<p>今月の予算は¥<strong>" + kSpreadsheet_copyTo.getRange("B2").getValues() + "</strong></p>";
     message = message + "<p>今月の支払い合計額は¥<strong>" + kSpreadsheet_copyTo.getRange("B3").getValues() + "</strong></p>";
@@ -223,9 +232,7 @@ function getCount(processType, tDate){
     message = message + "<p>今月の家賃は¥<strong>" + kSpreadsheet_copyTo.getRange("E8").getValues() + "</strong></p>";
     message = message + "<p>今月のガソリン代は¥<strong>" + kSpreadsheet_copyTo.getRange("E9").getValues() + "</strong></p>";
     message = message + "<p>その他、支払われた合計額について¥<strong>" + kSpreadsheet_copyTo.getRange("E10").getValues() + "</strong></p>";
-    
-    
-    
+
     // 結果をメール送信
     MailApp.sendEmail(SEND_MAIL_ADDRESS, subject, "", {htmlBody: message});
     
@@ -239,5 +246,5 @@ function getCurrentMonthCount(){
 }
 // 現在月の集計データを取得
 function countScript() {
-    getCount()
+    getCount(1)
 }
