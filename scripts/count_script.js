@@ -235,7 +235,7 @@ function getCount(processType, tDate){
 
 // 現在月の集計データを取得(対象月の更新は行わない)
 function getCurrentMonthCount(){
-    countScript();
+    getCount();
 }
 // 現在月の集計データを取得
 function countScript() {
