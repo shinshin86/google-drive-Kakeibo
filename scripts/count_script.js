@@ -1,4 +1,4 @@
-function countScript(){
+function getCount(processType, tDate){
     
     // 使用するSpreadsheetのIDを入力
     var KSS_ID = "[INSERT YOUR SPREADSHEET ID]";
@@ -43,9 +43,32 @@ function countScript(){
     var kData = kSheet.getDataRange().getValues();
     
     // 対象月を取得
-    var targetDate = new Date(kSheet.getRange("F3").getValues());
-    var targetYear = targetDate.getFullYear();
-    var targetMonth = targetDate.getMonth() + 1; // 対象月は"1"を足している(1月分低い数値が取れるため)
+    var targetDate,
+        targetYear,
+        targetMonth;
+    if(typeof processType === "undefined") {
+        // 現在月の集計データ取得パターン
+        targetDate  = new Date(kSheet.getRange("F3").getValues());
+        targetYear  = targetDate.getFullYear();
+        targetMonth = targetDate.getMonth() + 1; // 対象月は"1"を足している(1月分低い数値が取れるため)
+    } else if (processType == 1) {
+        // データ集計後に翌月の値に更新
+        targetDate  = new Date(kSheet.getRange("F3").getValues());
+        targetYear  = targetDate.getFullYear();
+        targetMonth = targetDate.getMonth() + 1; // 対象月は"1"を足している(1月分低い数値が取れるため)
+        
+        //  翌月の値に更新
+        kSheet.getRange("F3").setValue(new Date({y: targetYear, m: targetMonth}));
+    } else if (processType == 2 &&
+               typeof tDate !== "undefined"){
+        // 指定月のデータを取得
+        targetDate = new Date(tDate);
+        targetYear  = targetDate.getFullYear();
+        targetMonth = targetDate.getMonth();
+    } else {
+        // エラーパターンのため、何もせずに終了
+        return;
+    }
     
     
     // コピー先のセルを取得
@@ -208,4 +231,13 @@ function countScript(){
     
     // 支払者を２人にする場合は、このコメントを外し、使用すること。また、それ以上の人数の支払者を設定する場合は、下記のソースを元に拡張していくこと
     // MailApp.sendEmail(SEND_MAIL_ADDRESS_02, subject, "", {htmlBody: message});
+}
+
+// 現在月の集計データを取得(対象月の更新は行わない)
+function getCurrentMonthCount(){
+    countScript();
+}
+// 現在月の集計データを取得
+function countScript() {
+    getCount()
 }
