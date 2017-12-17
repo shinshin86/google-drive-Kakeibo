@@ -175,3 +175,9 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 [CSV_Exportファイル](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/Sample_of_Export_File_CSV/PaymentList_CSV_20151031_041.csv)
 
 
+## 毎月の固定出費について
+
+``fixed_cost``シートを作成し、そちらに金額を入力しておくことで、毎月の固定出費として支払金額に加算できます。<br>
+下のキャプチャを参考に、``fixed_cost``シートを作成し、ご使用ください。
+
+![fixed_cost作成について](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/introduction_of_export_function_01.png)
