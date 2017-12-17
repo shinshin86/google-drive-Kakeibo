@@ -181,3 +181,32 @@ CountScriptファイルを開き、画面上部の時計のアイコンを押下
 下のキャプチャを参考に、``fixed_cost``シートを作成し、ご使用ください。
 
 ![fixed_cost作成について](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/fixed_cost_sheet_01.png)
+
+## 現在の支払金額送信機能
+
+下記の手順を実施することにより、現在の支払金額を知ることが可能になります。
+
+1.<br>
+あなたのgoogle-drive-Kakeibo(Google Drive)フォルダ内で、``新規``→``その他``→``Googleフォーム``を選択し、新しくGoogle フォームを作成します。
+フォームは下記のように質問は削除して送信ボタンのみで使用します。
+
+![現在の支払金額送信機能](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/check_current_payment_01.png)
+
+2.<br>
+作成したGoogleフォームから``回答``タブを選択し、``回答先を選択``→``既存のスプレッドシートを選択``の順に選択します。
+
+3.<br>
+下のキャプチャのように選択したスプレッドシート内に新たなシートが作成されます。<br>
+(シート名などは任意で構いません)
+
+![現在の支払金額送信機能](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/images/check_current_payment_02.png)
+
+4.<br>
+スプレッドシート上の``ツール``メニューからスクリプトエディタを開き、表示されるスクリプトの内容を[export_script.js](https://github.com/shinshin86/google-drive-Kakeibo/blob/master/scripts/export_script.js)に差し替えます。
+
+5.<br>
+``編集``→``現在のプロジェクトのトリガー``より、スクリプトの実行トリガーを``getCurrentMonthCount``、``スプレッドシートから``、``フォーム送信時``と設定します。<br>
+(承認を求めるダイアログが表示されるので、あなたの使用しているアカウントで許可してください。)
+
+6.<br>
+さきほど作成したGoogleフォームのURLを、スマートフォンなどで使用されているブラウザのブックマークとして登録し、現在の支払金額を確認したい場合はそちらのフォームから送信ボタンを押下することにより、現在の支払い金額が設定したアドレスに送信されます。
