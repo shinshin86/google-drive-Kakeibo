@@ -1,10 +1,11 @@
 function getCount(processTypeId, tDate){
     // 定数
     FIRST_DAY = "01"; // 月初めの日付として使用
+    FIXED_COST_SHEET_NAME = "fixed_cost";
 
     // 使用するSpreadsheetのIDを入力
     var KSS_ID = "[INSERT YOUR SPREADSHEET ID]";
-    
+
     // 集計データを送るアドレスを下記に入力(複数のアドレスに送ることが可能 - その際は下記のSEND_MAIL_ADDRESSのコメントを外して、" "内にメールアドレスを入力すること)
     var SEND_MAIL_ADDRESS = "[INSERT YOUR MAIL ADDRESS]";
     // var SEND_MAIL_ADDRESS_02 = "[INSERT YOUR MAIL ADDRESS_02]";
@@ -30,20 +31,33 @@ function getCount(processTypeId, tDate){
     var houseRent = 0; // 家賃
     var gasolineCharges = 0; // 車のガソリン料金
     var otherCharges = 0; // その他の出費
-    
+
     // 支払者（支払者を２人にする場合は、Payment_02の行のコメントを外すこと。また、それ以上の人数の支払者を設定する場合は、下記の連番を増やしていくこと）
     var Payment = 0;
     // var Payment_02 = 0;
-    
+
     // 支払者の名前（支払者を２人にする場合は、Payment_02_nameの行のコメントを外すこと。また、それ以上の人数の支払者を設定する場合は、下記の連番を増やしていくこと）
     var Payment_name = "[INSERT YOUR NAME(Synchronize name with address and payment)]"
     // var Payment_02_name = "[INSERT YOUR NAME(Synchronize name with address and payment)]"
-    
+
     // コピー元のセル
     var kSpreadsheet = SpreadsheetApp.openById(KSS_ID);
     var kSheet = kSpreadsheet.getSheets()[0];
     var kData = kSheet.getDataRange().getValues();
-    
+
+    // 固定出費を加算
+    var fixedCostSheet = kSpreadsheet.getSheetByName(FIXED_COST_SHEET_NAME);
+    foodCharges += parseInt(fixedCostSheet.getRange("B2").getValue());
+    groceriesCharges += parseInt(fixedCostSheet.getRange("B3").getValue());
+    householdCharges += parseInt(fixedCostSheet.getRange("B4").getValue());
+    waterCharges += parseInt(fixedCostSheet.getRange("B5").getValue());
+    gasCharges += parseInt(fixedCostSheet.getRange("B6").getValue());
+    electricityCharges += parseInt(fixedCostSheet.getRange("B7").getValue());
+    houseRent += parseInt(fixedCostSheet.getRange("B8").getValue());
+    gasolineCharges += parseInt(fixedCostSheet.getRange("B9").getValue());
+    otherCharges += parseInt(fixedCostSheet.getRange("B10").getValue());
+
+
     // 対象月を取得
     var targetDate,
         targetYear,
